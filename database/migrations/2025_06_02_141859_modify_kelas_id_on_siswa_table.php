@@ -12,11 +12,10 @@ return new class extends Migration
     public function up()
     {
         Schema::table('siswa', function (Blueprint $table) {
-            $table->foreign('kelas_id')
-                ->references('id')
-                ->on('kelas')
-                ->onDelete('cascade');
-        });
+    $table->unsignedBigInteger('kelas_id')->after('nis'); // tambahkan kolom dulu
+    $table->foreign('kelas_id')->references('id')->on('kelas')->onDelete('cascade'); // baru foreign key
+});
+
     }
 
 
