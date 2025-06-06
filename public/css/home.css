@@ -1,0 +1,97 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+html, body {
+    height: 100%;
+    background-color: #f2f7ff;
+    overflow: auto; /* atau hilangkan sama sekali */
+}
+
+.main-main {
+    flex-grow: 1;
+    padding-top: 80px; /* > tinggi header */
+    overflow-y: auto;
+    height: calc(100vh - 80px); /* biar full tinggi tapi tetap bisa scroll */
+}
+
+.main {
+    flex: 1;
+}
+
+.main h1 {
+    font-size: 1.2rem;
+    margin-bottom: 0;
+}
+
+.main p {
+    font-weight: 1;
+}
+
+.welcome-box {
+    background-color: #f0f6ff;
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    max-width: 500px;
+}
+
+.welcome-title {
+    background: linear-gradient(90deg, #007bff, #00c6ff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin: 0;
+}
+
+.welcome-text {
+    margin-left: 10px;
+    font-size: 16px;
+    color: #333;
+    margin-top: 10px;
+}
+
+.cards {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-bottom: 2rem;
+    padding-left: 40px;
+    padding-right: 40px;
+}
+
+.card {
+    flex: 1;
+    min-width: 150px;
+    background-color: #f87171;
+    border-radius: 10px;
+    padding: 1rem;
+    color: white;
+    text-align: center;
+}
+
+.card.blue {
+    background-color: #38bdf8;
+}
+
+.card.red {
+    background-color: #ef4444;
+}
+
+.card-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 1rem;
+}
+
+.fa-bell {
+    color: gold;
+}
+
+.text p {
+    margin: auto;
+}
