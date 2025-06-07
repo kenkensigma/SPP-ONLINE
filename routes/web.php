@@ -16,6 +16,10 @@ Route::get('/', function () {
     return view('auth/login');
 });
 
+Route::get('/informasi-siswa', function () {
+    return view('informasi');
+});
+
 Route::group([
     "middleware" => "guest"
 ], function(){
