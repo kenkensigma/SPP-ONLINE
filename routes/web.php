@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\InformasiController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\UserController;
@@ -10,6 +11,10 @@ use Maatwebsite\Excel\Facades\Excel;
 
 
 Route::get('/kelas/data', [KelasController::class, 'getDataByKelas'])->name('kelas.data');
+
+
+Route::get('/informasi', [InformasiController::class, 'index'])->name('informasi.index');
+Route::get('/informasi/fetch', [InformasiController::class, 'fetch']);
 
 
 Route::get('/', function () {

@@ -8,7 +8,7 @@ class Kelas extends Model
 {
     protected $fillable = ['nama_kelas'];
 
-    public function siswas()
+    public function siswa()
     {
         return $this->hasMany(Siswa::class);
     }

@@ -57,7 +57,7 @@
                         <i class="fas fa-book"></i>
                         <span>Kelas</span>
                     </a>
-                    <a href="{{ url('informasi-siswa') }}" class="{{ Request::is('informasi-siswa') ? 'active' : '' }}">
+                    <a href="{{ url('informasi') }}" class="{{ Request::is('informasi') ? 'active' : '' }}">
                         <i class="fas fa-book"></i>
                         <span>Informasi Siswa</span>
                     </a>
