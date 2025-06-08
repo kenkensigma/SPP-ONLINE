@@ -11,6 +11,10 @@ html, body {
     overflow: auto; /* atau hilangkan sama sekali */
 }
 
+body {
+    margin: 0;
+}
+
 .main-main {
     flex-grow: 1;
     padding-top: 80px; /* > tinggi header */
@@ -20,6 +24,9 @@ html, body {
 
 .main {
     flex: 1;
+    background-color: #f2f7ff; /* Warna abu muda */
+    padding: 2rem;
+    overflow-y: auto;
 }
 
 .main h1 {

@@ -13,7 +13,7 @@
         <div class="container">
             <select id="kelas-select">
                 <option disabled selected hidden>Pilih Kelas</option>
-                @foreach($kelasList as $kelas)
+                @foreach ($kelasList as $kelas)
                     <option value="{{ $kelas->nama_kelas }}">{{ $kelas->nama_kelas }}</option>
                 @endforeach
             </select>
@@ -21,8 +21,19 @@
 
         <div id="siswa-container">
             <p style="text-align: center;">Silakan pilih kelas terlebih dahulu</p>
+            <div class="card blue">
+                <strong>Bagas bagas bagas</strong>
+                <div class="card-content">
+                    <p>NIS: 12345</p>
+                    <p>Kelas: yayayay</p>
+                    <p>SPP Semester 1: Rp123456789</p>
+                    <p>SPP Semester 2: Rp12345678</p>
+                </div>
+            </div>
         </div>
     </div>
+
+
 
     <script>
         function loadSiswa() {
@@ -30,7 +41,8 @@
             const search = document.getElementById('search-input').value;
 
             if (!kelas) {
-                document.getElementById('siswa-container').innerHTML = "<p style='text-align:center; color:red;'>Pilih kelas dulu!</p>";
+                document.getElementById('siswa-container').innerHTML =
+                    "<p style='text-align:center; color:red;'>Pilih kelas dulu!</p>";
                 return;
             }
 
@@ -39,7 +51,8 @@
                 .then(data => {
                     document.getElementById('siswa-container').innerHTML = data.html;
                 }).catch(() => {
-                    document.getElementById('siswa-container').innerHTML = "<p style='text-align:center;'>Gagal memuat data</p>";
+                    document.getElementById('siswa-container').innerHTML =
+                        "<p style='text-align:center;'>Gagal memuat data</p>";
                 });
         }
 
