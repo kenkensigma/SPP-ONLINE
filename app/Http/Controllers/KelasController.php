@@ -56,11 +56,16 @@ class KelasController extends Controller
         return redirect()->route('kelas.index')->with('success', 'Data siswa berhasil ditambahkan.');
     }
 
-    public function show(Request $request, $kelas)
+   public function show(Request $request, $kelas)
 {
     $search = $request->search;
+    $status = $request->status;
 
-    $siswa = Siswa::with('tagihan', 'kelas')
+    $siswa = Siswa::with(['tagihan' => function ($q) use ($status) {
+                if ($status) {
+                    $q->where('status', $status);
+                }
+            }, 'kelas'])
         ->whereHas('kelas', function ($query) use ($kelas) {
             $query->where('nama_kelas', $kelas);
         })
@@ -69,6 +74,11 @@ class KelasController extends Controller
                 $query->where('nama', 'like', '%' . $search . '%')
                       ->orWhere('nis', 'like', '%' . $search . '%');
             });
+        })
+        ->whereHas('tagihan', function ($q) use ($status) {
+            if ($status) {
+                $q->where('status', $status);
+            }
         })
         ->get();
 
@@ -79,6 +89,7 @@ class KelasController extends Controller
     $html = view('partials.tabel-tagihan', compact('siswa', 'kelas'))->render();
     return response()->json(['html' => $html]);
 }
+
 
 
     public function edit($id)
