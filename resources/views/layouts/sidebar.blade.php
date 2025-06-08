@@ -29,6 +29,11 @@
     {{-- Vue Js --}}
     <script src="https://unpkg.com/vue@3/dist/vue.global.prod.js"></script>
 
+    {{-- dotlottie --}}
+    <script type="module">
+        import 'https://unpkg.com/@dotlottie/player-component@2.7.12/dist/dotlottie-player.mjs';
+    </script>
+
 </head>
 
 <body>
