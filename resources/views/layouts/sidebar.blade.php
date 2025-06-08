@@ -25,9 +25,22 @@
     {{-- Vue Js --}}
     <script src="https://unpkg.com/vue@3/dist/vue.global.prod.js"></script>
 
+    {{-- dotlottie --}}
+    <script type="module">
+        import 'https://unpkg.com/@dotlottie/player-component@2.7.12/dist/dotlottie-player.mjs';
+    </script>
+
 </head>
 
 <body>
+
+    <div id="loader-overlay"
+        style="position:fixed; top:0; left:0; width:100%; height:100%; background:white; display:flex; justify-content:center; align-items:center; z-index:9999;">
+        <dotlottie-player src="https://lottie.host/aad22b25-f8c6-4828-9933-c99c287d8917/ZN8y32ibnD.lottie"
+            background="transparent" speed="1" style="width: 300px; height: 300px" loop autoplay>
+        </dotlottie-player>
+    </div>
+
     <div class="sidebar-container">
         {{-- Sidebar --}}
         <div class="sidebar">
@@ -84,6 +97,15 @@
             sidebar.classList.toggle('show');
         }
     </script>
+
+    <script>
+        window.addEventListener('load', function() {
+            setTimeout(() => {
+                document.getElementById('loader-overlay').style.display = 'none';
+            }, 2500);
+        });
+    </script>
+
 
 </body>
 
