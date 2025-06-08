@@ -27,12 +27,6 @@
     box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
 }
 
-/* Tambahan untuk toggle sidebar */
-.sidebar {
-    transition: transform 0.3s ease;
-    transform: translateX(0); /* posisi default terlihat */
-}
-
 .sidebar.hide {
     transform: translateX(-100%); /* sembunyikan ke kiri */
 }
@@ -43,21 +37,7 @@
 }
 
 .burger-btn {
-    background-color: transparent;
-    border: none;
-    font-size: 24px;
-    cursor: pointer;
-    margin-right: 20px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 8px;
-    border-radius: 8px;
-    transition: background-color 0.3s ease;
-}
-
-.burger-btn:hover {
-    background-color: rgba(0, 0, 0, 0.05);
+    display: none;
 }
 
 .sidebar-logo {
@@ -121,4 +101,8 @@
     gap: 10px;
     color: #333;
     text-decoration: none;
+}
+
+.close-btn {
+    display: none; /* disembunyikan di layar besar */
 }

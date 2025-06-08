@@ -2,10 +2,11 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Poppins', sans-serif;
+    font-family: "Poppins", sans-serif;
 }
 
-html, body {
+html,
+body {
     height: 100%;
     background-color: #f2f7ff;
     overflow: auto; /* atau hilangkan sama sekali */
@@ -25,7 +26,6 @@ body {
 .main {
     flex: 1;
     background-color: #f2f7ff; /* Warna abu muda */
-    padding: 2rem;
     overflow-y: auto;
 }
 

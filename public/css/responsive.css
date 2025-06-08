@@ -1,6 +1,24 @@
-/* Responsive sidebar untuk layar kecil */
 @media (max-width: 768px) {
-    /* Sidebar menjadi drawer dari kiri */
+    .burger-btn {
+        display: block;
+        background-color: transparent;
+        border: none;
+        font-size: 24px;
+        cursor: pointer;
+        margin-right: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 8px;
+        border-radius: 8px;
+        transition: background-color 0.3s ease;
+    }
+
+    .burger-btn:hover {
+        background-color: rgba(0, 0, 0, 0.05);
+    }
+
+    /* Sidebar sebagai drawer kiri */
     .sidebar {
         position: fixed;
         top: 0;
@@ -8,15 +26,15 @@
         height: 100%;
         width: 250px;
         background-color: white;
-        transform: translateX(-100%);
+        transform: translateX(-100%); /* default: sembunyi */
         transition: transform 0.3s ease;
         z-index: 2000;
         box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
     }
 
-    /* Sidebar tampil ketika tombol ditekan */
+    /* Tampilkan sidebar jika class show aktif */
     .sidebar.show {
-        transform: translateX(0);
+        transform: translateX(0) !important;
     }
 
     /* Kontainer ubah jadi kolom */
@@ -24,29 +42,25 @@
         flex-direction: column;
     }
 
-    /* Sembunyikan sidebar agar tidak mengganggu */
+    /* Sembunyikan sidebar */
     .sidebar-container.sidebar-hidden .sidebar {
         transform: translateX(-100%);
     }
 
-    /* Main konten tetap tampil penuh */
     .sidebar-container.sidebar-hidden .main {
         margin-left: 0;
     }
 
-    /* Header tetap di atas */
     .page-header {
         padding: 2px 20px;
         height: 60px;
         font-size: 20px;
     }
 
-    /* Tombol burger tampil */
     .burger-btn {
         display: flex;
     }
 
-    /* Kurangi padding konten utama */
     .main {
         padding: 1rem;
     }
@@ -61,5 +75,14 @@
         padding-left: 0;
         padding-right: 0;
         flex-direction: column;
+    }
+
+    .close-btn {
+        display: block;
+        background: none;
+        border: none;
+        font-size: 24px;
+        margin-left: auto;
+        cursor: pointer;
     }
 }

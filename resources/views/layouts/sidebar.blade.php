@@ -96,11 +96,14 @@
     <script>
         function toggleSidebar() {
             const sidebar = document.querySelector('.sidebar');
-            sidebar.classList.toggle('show');
-        }
-    </script>
+            const container = document.querySelector('.sidebar-container');
 
-    <script>
+            sidebar.classList.toggle('show');
+            container.classList.toggle('sidebar-hidden');
+        }
+
+
+
         window.addEventListener('load', function() {
             setTimeout(() => {
                 document.getElementById('loader-overlay').style.display = 'none';
