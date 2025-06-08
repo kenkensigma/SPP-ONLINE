@@ -1,170 +1,65 @@
-/* ===== RESPONSIVE STYLES ===== */
+/* Responsive sidebar untuk layar kecil */
+@media (max-width: 768px) {
+    /* Sidebar menjadi drawer dari kiri */
+    .sidebar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 250px;
+        background-color: white;
+        transform: translateX(-100%);
+        transition: transform 0.3s ease;
+        z-index: 2000;
+        box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+    }
 
-/* Burger button (mobile only) */
-.burger-btn {
-  display: none;
-  font-size: 24px;
-  background: none;
-  border: none;
-  color: #1e3a8a;
-  cursor: pointer;
-  position: relative; /* penting */
-  z-index: 1100;
-}
+    /* Sidebar tampil ketika tombol ditekan */
+    .sidebar.show {
+        transform: translateX(0);
+    }
 
+    /* Kontainer ubah jadi kolom */
+    .sidebar-container {
+        flex-direction: column;
+    }
 
-/* Sidebar overlay style */
-.sidebar {
-  transition: transform 0.3s ease;
-}
+    /* Sembunyikan sidebar agar tidak mengganggu */
+    .sidebar-container.sidebar-hidden .sidebar {
+        transform: translateX(-100%);
+    }
 
-/* Mobile styles */
-@media (max-width: 600px) {
+    /* Main konten tetap tampil penuh */
+    .sidebar-container.sidebar-hidden .main {
+        margin-left: 0;
+    }
 
+    /* Header tetap di atas */
+    .page-header {
+        padding: 2px 20px;
+        height: 60px;
+        font-size: 20px;
+    }
 
-  .sidebar.show {
-    transform: translateX(0);
-  }
+    /* Tombol burger tampil */
+    .burger-btn {
+        display: flex;
+    }
 
-/* Sembunyikan logo saat mobile, munculkan tombol X */
+    /* Kurangi padding konten utama */
+    .main {
+        padding: 1rem;
+    }
 
-  .logo-img,
-  .logo-text {
-    display: none;
-  }
+    .main-main {
+        padding-top: 70px;
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
 
-  .close-btn {
-    display: block;
-    background: none;
-    border: none;
-    color: white;
-    font-size: 28px;
-    cursor: pointer;
-    margin-left: auto;
-  }
-
-  .burger-btn {
-    display: block;
-  }
-}
-
-/* Desktop: tombol close disembunyikan */
-.close-btn {
-  display: none;
-}
-
-
-  .main-main {
-    padding-top: 80px; /* beri ruang untuk tombol burger */
-  }
-
-
-/* Mobile Devices */
-@media (max-width: 600px) {
-  .container {
-    flex-direction: column;
-  }
-
-  .sidebar {
-    width: 100%;
-    height: auto;
-    flex-direction: row;
-    overflow-x: auto;
-    padding: 10px;
-  }
-
-  .sidebar-logo,
-  .sidebar-logout {
-    display: none;
-  }
-
-  .nav {
-    flex-direction: row;
-    gap: 10px;
-    justify-content: center;
-  }
-
-  .nav a {
-    padding: 8px 10px;
-    font-size: 12px;
-  }
-
-  .main-main {
-    padding-top: 90px;
-    padding-left: 20px;
-    padding-right: 20px;
-  }
-
-  .cards {
-    flex-direction: column;
-    padding: 10px;
-  }
-
-  .form-login {
-    width: 90%;
-    padding: 20px;
-  }
-
-  .page-header {
-    font-size: 18px;
-    padding: 10px 20px;
-  }
-
-  .welcome-box {
-    max-width: 100%;
-    padding: 15px;
-  }
-
-  .card {
-    min-width: auto;
-    font-size: 14px;
-  }
-}
-
-/* Tablet Devices */
-@media (min-width: 601px) and (max-width: 1024px) {
-  .sidebar {
-    width: 200px;
-  }
-
-  .nav a {
-    font-size: 13px;
-  }
-
-  .main-main {
-    padding-left: 30px;
-    padding-right: 30px;
-  }
-
-  .cards {
-    flex-wrap: wrap;
-  }
-
-  .form-login {
-    width: 80%;
-  }
-
-  .welcome-box {
-    max-width: 90%;
-  }
-}
-
-/* Desktop Devices */
-@media (min-width: 1025px) {
-  .sidebar {
-    width: 260px;
-  }
-
-  .main-main {
-    padding-left: 40px;
-    padding-right: 40px;
-  }
-
-  .form-login {
-    width: 400px;
-  }
-
-  .cards {
-    flex-wrap: wrap;
-  }
+    .cards {
+        padding-left: 0;
+        padding-right: 0;
+        flex-direction: column;
+    }
 }

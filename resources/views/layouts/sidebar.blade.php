@@ -11,6 +11,10 @@
     <link rel="stylesheet" href="{{ asset('css/navbar.css') }}">
     <link rel="stylesheet" href="{{ asset('css/responsive.css') }}">
 
+    {{-- dotlottie --}}
+    <script type="module">
+        import 'https://unpkg.com/@dotlottie/player-component@2.7.12/dist/dotlottie-player.mjs';
+    </script>
 
     {{-- Font --}}
     <style>
@@ -28,6 +32,16 @@
 </head>
 
 <body>
+    {{-- Loading Page --}}
+    <div id="loader-overlay"
+        style="position:fixed; top:0; left:0; width:100%; height:100%; background:white; display:flex; justify-content:center; align-items:center; z-index:9999;">
+        <dotlottie-player src="https://lottie.host/aad22b25-f8c6-4828-9933-c99c287d8917/ZN8y32ibnD.lottie"
+            background="transparent" speed="1" style="width: 300px; height: 300px" loop autoplay>
+        </dotlottie-player>
+    </div>
+
+
+
     <div class="sidebar-container">
         {{-- Sidebar --}}
         <div class="sidebar">
@@ -57,10 +71,6 @@
                         <i class="fas fa-book"></i>
                         <span>Kelas</span>
                     </a>
-                    <a href="{{ url('informasi') }}" class="{{ Request::is('informasi') ? 'active' : '' }}">
-                        <i class="fas fa-book"></i>
-                        <span>Informasi Siswa</span>
-                    </a>
                 </nav>
             </div>
 
@@ -85,6 +95,13 @@
         }
     </script>
 
+    <script>
+        window.addEventListener('load', function() {
+            setTimeout(() => {
+                document.getElementById('loader-overlay').style.display = 'none';
+            }, 2500);
+        });
+    </script>
 </body>
 
 </html>
