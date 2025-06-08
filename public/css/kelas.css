@@ -78,3 +78,16 @@
     margin-bottom: 12px; 
     margin-left: 30px;
 }
+
+#status-filter {
+    float: right;
+    padding: 8px 12px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+    font-family: 'poppins', sans-serif;
+    background-color: #fff;
+    height: 38px;
+    margin-left: auto;
+    margin-top: 4px;
+}
