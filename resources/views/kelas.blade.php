@@ -30,12 +30,11 @@
             <input type="text" id="search-input" placeholder="Cari nama/NIS siswa...">
             <button onclick="loadKelas(document.getElementById('kelas-select').value)">Cari</button>
 
-
             {{-- Admin bisa tambah data --}}
             @if (Auth::user()->role === 'admin')
                 <a href="{{ route('kelas.create') }}" class="btn-kelas">Tambah Data</a>
             @endif
-
+    
             {{-- Export data --}}
             <a href="#" id="export-btn" oncli class="btn btn-success" style="margin-bottom: 10px;">
                 Export ke Excel
@@ -96,29 +95,35 @@
         document.getElementById('kelas-select').dispatchEvent(new Event('change'));
     </script>
 
-    <script>
-        function loadSiswa() {
-            const kelas = document.getElementById('kelas-select').value;
-            const search = document.getElementById('search-input').value;
+<script>
+    function loadKelas(kelas) {
+        const search = document.getElementById('search-input').value;
+        const status = document.getElementById('status-filter').value;
 
-            if (!kelas) {
-                document.getElementById('siswa-container').innerHTML =
-                    "<p style='text-align:center; color:red;'>Pilih kelas dulu!</p>";
-                return;
-            }
-
-            fetch(`/informasi/fetch?kelas=${encodeURIComponent(kelas)}&search=${encodeURIComponent(search)}`)
-                .then(res => res.json())
-                .then(data => {
-                    document.getElementById('siswa-container').innerHTML = data.html;
-                }).catch(() => {
-                    document.getElementById('siswa-container').innerHTML =
-                        "<p style='text-align:center;'>Gagal memuat data</p>";
-                });
+        if (!kelas) {
+            document.getElementById('tagihan-container').innerHTML =
+                "<p style='text-align:center; color:red;'>Pilih kelas dulu!</p>";
+            return;
         }
 
-        document.getElementById('kelas-select').addEventListener('change', loadSiswa);
-    </script>
+        fetch(`/kelas/${encodeURIComponent(kelas)}?search=${encodeURIComponent(search)}&status=${encodeURIComponent(status)}`)
+            .then(res => res.json())
+            .then(data => {
+                document.getElementById('tagihan-container').innerHTML = data.html;
+            })
+            .catch(() => {
+                document.getElementById('tagihan-container').innerHTML =
+                    "<p style='text-align:center;'>Gagal memuat data</p>";
+            });
+    }
+
+    document.getElementById('kelas-select').addEventListener('change', function () {
+        loadKelas(this.value);
+        const exportBtn = document.getElementById('export-btn');
+        exportBtn.href = `/kelas/export/${encodeURIComponent(this.value)}`;
+    });
+</script>
+
 
 
 
