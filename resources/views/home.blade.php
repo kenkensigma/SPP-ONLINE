@@ -17,27 +17,27 @@
 
         <div class="cards">
             <div class="card red">
-                <strong>Total Alert</strong>
+                <strong>Siswa Belum Membayar</strong>
                 <div class="card-content">
-                    <i class="fa-solid fa-bell"></i>
+                    <i class="fa-solid fa-hourglass-half"></i>
                     <div class="text">
                         <p>100</p>
                     </div>
                 </div>
             </div>
             <div class="card blue">
-                <strong>Total Alert</strong>
+                <strong>Siswa Sudah Membayar</strong>
                 <div class="card-content">
-                    <i class="fa-solid fa-bell"></i>
+                    <i class="fa-solid fa-file-invoice-dollar"></i>
                     <div class="text">
                         <p>100</p>
                     </div>
                 </div>
             </div>
             <div class="card red">
-                <strong>Total Alert</strong>
+                <strong>Total User</strong>
                 <div class="card-content">
-                    <i class="fa-solid fa-bell"></i>
+                    <i class="fa-solid fa-user-lock"></i>
                     <div class="text">
                         <p>100</p>
                     </div>
@@ -46,7 +46,7 @@
             <div class="card blue">
                 <strong>Total Pembayaran Bulanan</strong>
                 <div class="card-content">
-                    <i class="fa-solid fa-bell"></i>
+                    <i class="fa-solid fa-money-bill"></i>
                     <div class="text">
                         <p>{{ number_format($totalPembayaran, 0, ',', '.') }}</p>
                     </div>
