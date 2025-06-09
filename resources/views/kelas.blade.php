@@ -20,6 +20,7 @@
     <link rel="stylesheet" href="{{ asset('css/kelas.css') }}">
 
     <div class="page-header">
+        <button class="burger-btn" onclick="toggleSidebar()">☰</button>
         <h1>Kelas</h1>
     </div>
 
@@ -40,10 +41,10 @@
         </a>
 
         <select id="status-filter">
-    <option value="" disabled selected>Semua Status</option>
-    <option value="Lunas">Lunas</option>
-    <option value="Belum Bayar">Belum Bayar</option>
-</select>
+            <option value="" disabled selected>Semua Status</option>
+            <option value="Lunas">Lunas</option>
+            <option value="Belum Bayar">Belum Bayar</option>
+        </select>
 
         <div class="container">
             <select class="kelas-dropdown" id="kelas-select" name="kelas" required>
@@ -95,11 +96,10 @@
     </script>
 
     <script>
-
-       document.getElementById('status-filter').addEventListener('change', function() {
-    const selectedKelas = document.getElementById('kelas-select').value;
-    loadKelas(selectedKelas);
-});
+        document.getElementById('status-filter').addEventListener('change', function() {
+            const selectedKelas = document.getElementById('kelas-select').value;
+            loadKelas(selectedKelas);
+        });
 
 
 
@@ -114,10 +114,10 @@
             let status = document.getElementById('status-filter')?.value || '';
 
             fetch(`/kelas/${namaKelas}?search=${search}&status=${status}`) // ← FIX DI SINI
-        .then(response => response.json())
-        .then(data => {
-            document.getElementById('tagihan-container').innerHTML = data.html;
-        })
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('tagihan-container').innerHTML = data.html;
+                })
                 .catch(error => {
                     document.getElementById('tagihan-container').innerHTML =
                         '<p style="text-align:center;">Terjadi kesalahan saat memuat data.</p>';

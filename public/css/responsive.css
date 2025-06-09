@@ -1,4 +1,4 @@
-@media (max-width: 768px) {
+@media (max-width: 700px) {
     .burger-btn {
         display: block;
         background-color: transparent;
@@ -84,5 +84,12 @@
         font-size: 24px;
         margin-left: auto;
         cursor: pointer;
+    }
+}
+
+/* KELAS RESPONSIVE */
+@media (max-width: 700px) {
+    .table-wrapper table {
+        min-width: 600px; /* atau lebih besar sesuai kebutuhan */
     }
 }
