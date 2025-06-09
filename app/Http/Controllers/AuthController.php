@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\TagihanSiswa;
 use Illuminate\Http\Request;
 use App\Models\Petugas;
 use Illuminate\Support\Facades\Auth;
@@ -44,7 +45,9 @@ class AuthController extends Controller
     public function dashboard()
     {
         $user = Auth::user();
-        return view('home', compact('user'));
+        $totalPembayaran = TagihanSiswa::sum('total_tagihan');
+
+        return view('home', compact('user', 'totalPembayaran'));
     }
 
     // Logout

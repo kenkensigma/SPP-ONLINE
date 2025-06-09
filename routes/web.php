@@ -64,5 +64,4 @@ Route::resource('kelas', KelasController::class);
 
 Route::get('/kelas/export/{kelas}', [KelasController::class, 'export'])->name('kelas.export');
 Route::get('/kelas/{kelas}', [KelasController::class, 'show']);
-Route::get('/home', [DashboardController::class, 'index']);
 
