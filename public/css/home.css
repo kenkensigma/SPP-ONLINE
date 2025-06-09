@@ -17,6 +17,7 @@ body {
 }
 
 .main-main {
+    margin: 10px 30px;
     flex-grow: 1;
     padding-top: 80px; /* > tinggi header */
     overflow-y: auto;

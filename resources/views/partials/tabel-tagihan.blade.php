@@ -35,25 +35,27 @@
                             </td>
 
                             <td>{{ $tagih->created_at->format('d M Y') }}</td>
-                            <td>
+                            <td class="kolom-aksi">
                                 @if (Auth::user()->role === 'admin')
-                                    <a href="{{ route('kelas.edit', $s->id) }}" class="btn-edit">
-                                        <i class="fas fa-pen"></i>
-                                    </a>
-                                    <form action="{{ route('kelas.destroy', $s->id) }}" method="POST"
-                                        style="display:inline;">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button type="submit" class="btn-delete"
-                                            onclick="return confirm('Yakin ingin menghapus?')">
-                                            <i class="fas fa-trash"></i>
-                                        </button>
-                                    </form>
+                                    <div class="aksi-wrapper">
+                                        <a href="{{ route('kelas.edit', $s->id) }}" class="btn-edit">
+                                            <i class="fas fa-pen"></i>
+                                        </a>
+                                        <form action="{{ route('kelas.destroy', $s->id) }}" method="POST">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="btn-delete"
+                                                onclick="return confirm('Yakin ingin menghapus?')">
+                                                <i class="fas fa-trash"></i>
+                                            </button>
+                                        </form>
+                                    </div>
                                 @else
                                     <span class="text-muted">-</span>
                                 @endif
-
                             </td>
+
+
                         </tr>
                     @endforeach
                 @endforeach

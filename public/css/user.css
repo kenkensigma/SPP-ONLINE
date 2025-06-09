@@ -22,6 +22,11 @@
     margin-bottom: 12px; /* Tambahkan jarak ke bawah */
 }
 
+.table-wrapper {
+    overflow-x: auto;
+    width: 100%;
+}
+
 .user-table {
     width: 100%;
     border-collapse: collapse;
