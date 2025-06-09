@@ -26,26 +26,27 @@
 
     <div class="main-main">
 
-        <div id="search-container">
-            <input type="text" id="search-input" placeholder="Cari nama/NIS siswa...">
-            <button onclick="loadKelas(document.getElementById('kelas-select').value)">Cari</button>
+        <div class="search-filter-bar">
+            <div id="search-container">
+                <input type="text" id="search-input" placeholder="Cari nama/NIS siswa...">
+                <button onclick="loadKelas(document.getElementById('kelas-select').value)">Cari</button>
 
+                @if (Auth::user()->role === 'admin')
+                    <a href="{{ route('kelas.create') }}" class="btn-kelas">Tambah Data</a>
+                @endif
 
-            {{-- Admin bisa tambah data --}}
-            @if (Auth::user()->role === 'admin')
-                <a href="{{ route('kelas.create') }}" class="btn-kelas">Tambah Data</a>
-            @endif
+                <a href="#" id="export-btn" class="btn btn-success">
+                    Export ke Excel
+                </a>
+            </div>
 
-            {{-- Export data --}}
-            <a href="#" id="export-btn" oncli class="btn btn-success" style="margin-bottom: 10px;">
-                Export ke Excel
-            </a>
+            <select id="status-filter">
+                <option value="" disabled selected>Semua Status</option>
+                <option value="Lunas">Lunas</option>
+                <option value="Belum Bayar">Belum Bayar</option>
+            </select>
         </div>
-        <select id="status-filter">
-            <option value="" disabled selected>Semua Status</option>
-            <option value="Lunas">Lunas</option>
-            <option value="Belum Bayar">Belum Bayar</option>
-        </select>
+
 
         <div class="container">
             <select id="kelas-select">
@@ -55,7 +56,7 @@
                 @endforeach
             </select>
         </div>
-        
+
 
         <div class="container" id="tagihan-container">
             {{-- Teks defaultnya sblm milih kelas --}}
