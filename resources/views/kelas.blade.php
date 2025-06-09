@@ -30,11 +30,12 @@
             <input type="text" id="search-input" placeholder="Cari nama/NIS siswa...">
             <button onclick="loadKelas(document.getElementById('kelas-select').value)">Cari</button>
 
+
             {{-- Admin bisa tambah data --}}
             @if (Auth::user()->role === 'admin')
                 <a href="{{ route('kelas.create') }}" class="btn-kelas">Tambah Data</a>
             @endif
-    
+
             {{-- Export data --}}
             <a href="#" id="export-btn" oncli class="btn btn-success" style="margin-bottom: 10px;">
                 Export ke Excel
@@ -54,7 +55,7 @@
                 @endforeach
             </select>
         </div>
-        
+
 
         <div class="container" id="tagihan-container">
             {{-- Teks defaultnya sblm milih kelas --}}
