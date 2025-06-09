@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Siswa;
 use App\Models\TagihanSiswa;
+use App\Models\User;
 use Illuminate\Http\Request;
 use App\Models\Petugas;
 use Illuminate\Support\Facades\Auth;
@@ -27,11 +29,6 @@ class AuthController extends Controller
             if ($petugas && Hash::check($request->password, $petugas->password)) {
                 Auth::login($petugas);
 
-                // Redirect berdasarkan role/level (kalau pakai field `level`)
-                // if ($petugas->level === 'admin') {
-                //     return redirect()->route('admin.dashboard');
-                // }
-
                 return redirect()->route('home');
             } else {
                 return redirect()->route("login")->with("error", "Email atau password salah.");
@@ -45,9 +42,30 @@ class AuthController extends Controller
     public function dashboard()
     {
         $user = Auth::user();
+
+        // menghitung total uang
         $totalPembayaran = TagihanSiswa::sum('total_tagihan');
 
-        return view('home', compact('user', 'totalPembayaran'));
+        // menghitung siswa yg belum bayar
+        $belumBayar = Siswa::whereHas('tagihan', function ($query) {
+            $query->where('status', 'Belum Bayar');
+        })->count();
+
+        // menghitung siswa yang lunas
+        $sudahBayar = Siswa::whereDoesntHave('tagihan', function ($query) {
+            $query->where('status', 'Belum Bayar');
+        })->count();
+
+        $totalUser = Petugas::count();
+
+        // ini ngirim variable ke home
+        return view('home', compact(
+            'user',
+            'totalPembayaran',
+            'belumBayar',
+            'sudahBayar',
+            'totalUser'
+        ));
     }
 
     // Logout

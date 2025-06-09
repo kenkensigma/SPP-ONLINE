@@ -21,7 +21,7 @@
                 <div class="card-content">
                     <i class="fa-solid fa-hourglass-half"></i>
                     <div class="text">
-                        <p>100</p>
+                        <p>{{ $belumBayar }}</p>
                     </div>
                 </div>
             </div>
@@ -30,7 +30,7 @@
                 <div class="card-content">
                     <i class="fa-solid fa-file-invoice-dollar"></i>
                     <div class="text">
-                        <p>100</p>
+                        <p>{{ $sudahBayar }}</p>
                     </div>
                 </div>
             </div>
@@ -39,10 +39,11 @@
                 <div class="card-content">
                     <i class="fa-solid fa-user-lock"></i>
                     <div class="text">
-                        <p>100</p>
+                        <p>{{ $totalUser }}</p>
                     </div>
                 </div>
             </div>
+
             <div class="card blue">
                 <strong>Total Pembayaran Bulanan</strong>
                 <div class="card-content">
