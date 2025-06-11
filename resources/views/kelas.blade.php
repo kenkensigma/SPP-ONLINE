@@ -109,7 +109,7 @@
 
             fetch(
                     `/kelas/${encodeURIComponent(kelas)}?search=${encodeURIComponent(search)}&status=${encodeURIComponent(status)}`
-                    )
+                )
                 .then(res => res.json())
                 .then(data => {
                     document.getElementById('tagihan-container').innerHTML = data.html;
