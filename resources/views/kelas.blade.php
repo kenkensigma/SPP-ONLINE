@@ -26,7 +26,7 @@
 
     <div class="main-main">
 
-                <div class="search-filter-bar">
+        <div class="search-filter-bar">
             <div id="search-container">
                 <input type="text" id="search-input" placeholder="Cari nama/NIS siswa...">
                 <button onclick="loadKelas(document.getElementById('kelas-select').value)">Cari</button>
@@ -35,9 +35,9 @@
                     <a href="{{ route('kelas.create') }}" class="btn-kelas">Tambah Data</a>
                 @endif
 
-            <a href="#" id="export-btn" oncli class="btn btn-success" style="margin-bottom: 10px;">
-                Export ke Excel
-            </a>
+                <a href="#" id="export-btn" oncli class="btn btn-success" style="margin-bottom: 10px;">
+                    Export ke Excel
+                </a>
             </div>
 
             <select id="status-filter">
@@ -96,34 +96,36 @@
         document.getElementById('kelas-select').dispatchEvent(new Event('change'));
     </script>
 
-<script>
-    function loadKelas(kelas) {
-        const search = document.getElementById('search-input').value;
-        const status = document.getElementById('status-filter').value;
+    <script>
+        function loadKelas(kelas) {
+            const search = document.getElementById('search-input').value;
+            const status = document.getElementById('status-filter').value;
 
-        if (!kelas) {
-            document.getElementById('tagihan-container').innerHTML =
-                "<p style='text-align:center; color:red;'>Pilih kelas dulu!</p>";
-            return;
+            if (!kelas) {
+                document.getElementById('tagihan-container').innerHTML =
+                    "<p style='text-align:center; color:red;'>Pilih kelas dulu!</p>";
+                return;
+            }
+
+            fetch(
+                    `/kelas/${encodeURIComponent(kelas)}?search=${encodeURIComponent(search)}&status=${encodeURIComponent(status)}`
+                    )
+                .then(res => res.json())
+                .then(data => {
+                    document.getElementById('tagihan-container').innerHTML = data.html;
+                })
+                .catch(() => {
+                    document.getElementById('tagihan-container').innerHTML =
+                        "<p style='text-align:center;'>Gagal memuat data</p>";
+                });
         }
 
-        fetch(`/kelas/${encodeURIComponent(kelas)}?search=${encodeURIComponent(search)}&status=${encodeURIComponent(status)}`)
-            .then(res => res.json())
-            .then(data => {
-                document.getElementById('tagihan-container').innerHTML = data.html;
-            })
-            .catch(() => {
-                document.getElementById('tagihan-container').innerHTML =
-                    "<p style='text-align:center;'>Gagal memuat data</p>";
-            });
-    }
-
-    document.getElementById('kelas-select').addEventListener('change', function () {
-        loadKelas(this.value);
-        const exportBtn = document.getElementById('export-btn');
-        exportBtn.href = `/kelas/export/${encodeURIComponent(this.value)}`;
-    });
-</script>
+        document.getElementById('kelas-select').addEventListener('change', function() {
+            loadKelas(this.value);
+            const exportBtn = document.getElementById('export-btn');
+            exportBtn.href = `/kelas/export/${encodeURIComponent(this.value)}`;
+        });
+    </script>
 
 
 
